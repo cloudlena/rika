@@ -1,0 +1,8 @@
+[package]
+name = "rika"
+version = "0.1.0"
+authors = ["Lena Fuhrimann"]
+edition = "2021"
+
+[dependencies]
+rand = "0.8.5"
