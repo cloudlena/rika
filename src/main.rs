@@ -1,4 +1,4 @@
-use rand::{thread_rng, Rng};
+use rand::{Rng, rng};
 
 struct Nickname {
     adjective: String,
@@ -17,7 +17,7 @@ impl Nickname {
 }
 
 fn main() {
-    let mut rng = thread_rng();
+    let mut rng = rng();
 
     let nicknames = [
         Nickname::new("agent", "", ""),
@@ -86,14 +86,14 @@ fn main() {
         Nickname::new("wutziges", "wutz", "wutz"),
     ];
 
-    let adjective = &mut nicknames[rng.gen_range(0..nicknames.len() - 1)]
+    let adjective = &mut nicknames[rng.random_range(0..nicknames.len() - 1)]
         .adjective
         .clone();
-    let prefix = &nicknames[rng.gen_range(0..nicknames.len() - 1)].prefix;
+    let prefix = &nicknames[rng.random_range(0..nicknames.len() - 1)].prefix;
 
     let mut noun = "";
     while noun.is_empty() {
-        noun = &nicknames[rng.gen_range(0..nicknames.len() - 1)].noun;
+        noun = &nicknames[rng.random_range(0..nicknames.len() - 1)].noun;
     }
 
     if !adjective.is_empty() {
