@@ -14,7 +14,7 @@ $ ./target/release/rika
  ___Y  ,    .'7 /|
 (_,___/...-` (_/_/
 
-nöffmausi
+Nöffmausi
 ```
 
 ## Usage
