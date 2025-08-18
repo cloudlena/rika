@@ -16,6 +16,22 @@ impl Nickname {
     }
 }
 
+fn to_title_case(s: &str) -> String {
+    s.split_whitespace()
+        .map(|word| {
+            let mut chars = word.chars();
+            match chars.next() {
+                None => String::new(),
+                Some(first) => {
+                    first.to_uppercase().collect::<String>()
+                        + chars.as_str().to_lowercase().as_str()
+                }
+            }
+        })
+        .collect::<Vec<String>>()
+        .join(" ")
+}
+
 fn main() {
     let mut rng = rng();
 
@@ -34,6 +50,7 @@ fn main() {
         Nickname::new("härziges", "", ""),
         Nickname::new("huere", "", ""),
         Nickname::new("", "hunde", "hund"),
+        Nickname::new("", "", "hündelus"),
         Nickname::new("", "", "hundeli"),
         Nickname::new("", "", "iisbär"),
         Nickname::new("kleines", "", ""),
@@ -67,6 +84,7 @@ fn main() {
         Nickname::new("", "schnappi", "schnappi"),
         Nickname::new("", "schnapps", "schnapps"),
         Nickname::new("", "schnubber", "schnubber"),
+        Nickname::new("", "schnübbär", "schnübbär"),
         Nickname::new("", "", "schnubbi"),
         Nickname::new("", "schnüff", ""),
         Nickname::new("", "schnüffel", ""),
@@ -112,5 +130,6 @@ fn main() {
 (_,___/...-` (_/_/"
     );
     println!();
-    println!("{adjective}{prefix}{noun}");
+    let final_nickname = format!("{adjective}{prefix}{noun}");
+    println!("{}", to_title_case(&final_nickname));
 }
